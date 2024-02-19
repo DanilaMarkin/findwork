@@ -9,7 +9,7 @@ $auth = new Authentication($pdo);
 $profile = $auth->findProfile($_SESSION['user']);
 ?>
 <nav class="bg-black border-gray-200">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="container flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="../media/img/logo.svg" class="h-10" alt="Flowbite Logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">FindWork</span>
@@ -21,7 +21,7 @@ $profile = $auth->findProfile($_SESSION['user']);
         <?php if (empty($profile["img"])) { ?>
         <img class="w-8 h-8 rounded-full" src="../media/img/unknows.jpg" alt="user photo">
         <?php } else {?>
-        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+        <img class="w-8 h-8 rounded-full  object-cover" src="../upload/<?=$profile["img"]?>" alt="user photo">
         <?php }?>
       </button>
       <!-- Dropdown menu -->
@@ -32,7 +32,7 @@ $profile = $auth->findProfile($_SESSION['user']);
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
           <li>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+            <a href="../pages/profile.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Профиль</a>
           </li>
           <li>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>

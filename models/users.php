@@ -113,3 +113,18 @@ class Authentication {
 		return false;
 	}
 }
+function uploadImage($image) {
+	$extension = pathinfo($image['name'], PATHINFO_EXTENSION);
+	$filename = uniqid() . "." . $extension;
+	move_uploaded_file($image['tmp_name'], "../upload/" . $filename);
+	return $filename;
+}
+
+function editPhoto($login, $filename) {
+    $pdo = Connection::get()->connect();
+	$sql = 'UPDATE findwork.users SET img = :img WHERE login = :login';
+	$statement = $pdo->prepare($sql);
+	$statement->bindValue(":login", $login);
+	$statement->bindValue(":img", $filename);
+	$statement->execute();
+}
