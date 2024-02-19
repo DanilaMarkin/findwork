@@ -1,0 +1,19 @@
+.sign-up-successful{
+    margin-bottom: 10px;
+    border: none;
+    background: #c9ffbb;
+    color: #029a02;
+    border-radius: 5px;
+    padding: 10px;
+}
+.sign-up-error{
+    margin-bottom: 10px;
+    border: none;
+    background: #fddddd;
+    color: #ff0000;
+    border-radius: 5px;
+    padding: 10px;
+}
+.d-none{
+    display: none;
+}
