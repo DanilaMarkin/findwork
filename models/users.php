@@ -129,3 +129,4 @@ function editPhoto($login, $filename) {
 	$statement->bindValue(":img", $filename);
 	$statement->execute();
 }
+

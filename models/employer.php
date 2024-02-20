@@ -111,3 +111,16 @@ class AuthEmployer {
 		return false;
 	}
 }
+
+function addVacancy($work, $price, $city, $stage, $info, $id_employer) {
+    $pdo = Connection::get()->connect();
+	$sql = 'INSERT INTO findwork.vacancy (work, price, city, stage, info, id_employer) VALUES(:work, :price, :city, :stage, :info, :id_employer)';
+	$statement = $pdo->prepare($sql);
+	$statement->bindValue(":work", $work);
+	$statement->bindValue(":price", $price);
+	$statement->bindValue(":city", $city);
+	$statement->bindValue(":stage", $stage);
+	$statement->bindValue(":info", $info);
+	$statement->bindValue(":id_employer", $id_employer);
+	$statement->execute();
+}

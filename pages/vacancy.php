@@ -3,7 +3,7 @@ include_once("../components/head.php");
 include_once("../components/header.php");
 include_once("../models/guest.php");
 
-$vacancy = getVacancy();
+$vacancys = getVacancy();
 ?>
  <div class="container mx-auto px-4 py-8">
  <div class="mb-4">
@@ -34,13 +34,14 @@ $vacancy = getVacancy();
             <!-- Карточки с вакансиями -->
             <div class="col-span-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <?php foreach($vacancys as $vacancy) {?>
                     <!-- Пример карточки с вакансией -->
                     <div class="bg-white rounded-md p-4 shadow-md relative">
-                        <h3 class="text-lg font-semibold mb-2">Название вакансии</h3>
-                        <p class="text-gray-600 mb-2">Зарплата: $3000-$4000</p>
-                        <p class="text-gray-600 mb-2">Компания: ООО "Название компании"</p>
-                        <p class="text-gray-600 mb-2">Город: Москва</p>
-                        <p class="text-gray-600 mb-4">Требуемый опыт работы: от 2 до 5 лет</p>
+                        <h3 class="text-lg font-semibold mb-2"><?= $vacancy["work"] ?></h3>
+                        <p class="text-gray-600 mb-2"><?= $vacancy["price"] ?></p>
+                        <p class="text-gray-600 mb-2"><?= $vacancy["name"] ?></p>
+                        <p class="text-gray-600 mb-2"><?= $vacancy["city"] ?></p>
+                        <p class="text-gray-600 mb-4"><?= $vacancy["stage"] ?></p>
                         <a href="#" class="bg-green-500 text-white py-2 px-4 rounded-md inline-block">Откликнуться</a>
                         <button class="absolute top-2 right-2 text-gray-600 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,6 +50,7 @@ $vacancy = getVacancy();
                         </button>
                     </div>
                     <!-- Повторите блок выше для каждой вакансии -->
+                    <?php } ?>
                 </div>
             </div>
         </div>
