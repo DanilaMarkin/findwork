@@ -62,3 +62,43 @@ class AuthAdmin {
         unset($_SESSION['admin']);
     }
 }
+function countUsers(){
+    $pdo = Connection::get()->connect();
+    $sql = 'SELECT COUNT(*) FROM findwork.users';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $countUsers = $statement->fetch(PDO::FETCH_ASSOC);
+    return $countUsers;
+}
+function countVacancy(){
+    $pdo = Connection::get()->connect();
+    $sql = 'SELECT COUNT(*) FROM findwork.vacancy';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $countVacancy = $statement->fetch(PDO::FETCH_ASSOC);
+    return $countVacancy;
+}
+function countEmployer(){
+    $pdo = Connection::get()->connect();
+    $sql = 'SELECT COUNT(*) FROM findwork.employer';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $countEmployer = $statement->fetch(PDO::FETCH_ASSOC);
+    return $countEmployer;
+}
+function latestUsers(){
+    $pdo = Connection::get()->connect();
+    $sql = 'SELECT * FROM findwork.users ORDER BY users.id DESC LIMIT 5';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $latestUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $latestUsers;
+}
+function latestEmployers(){
+    $pdo = Connection::get()->connect();
+    $sql = 'SELECT * FROM findwork.employer ORDER BY employer.id DESC LIMIT 5';
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $latestEmployers = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $latestEmployers;
+}

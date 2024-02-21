@@ -97,6 +97,7 @@ class Authentication {
 	{
         unset($_SESSION['user']);
         unset($_SESSION['employer']);
+        unset($_SESSION['admin']);
     }
 
 	public function isAuthed() {
